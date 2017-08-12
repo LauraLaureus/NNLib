@@ -8,10 +8,10 @@ function [netModel] = nncreate(inputFeatures, numLayers, arrayDimensions, numOut
 % numOutputNeurons is the number of expected outputs (scalar)
 netModel = cell(1,1+numLayers+1);
 
-netModel{2} = rand([inputFeatures,arrayDimensions(1)]);
+netModel{2} = rand([arrayDimensions(1),inputFeatures]);
 for i=2:numLayers
-    netModel{i+1} = rand([arrayDimensions(i-1),arrayDimensions(i)]);
+    netModel{i+1} = rand([arrayDimensions(i),arrayDimensions(i-1)]);
 end
-netModel{1+numLayers+1} = rand([arrayDimensions(i),numOutputNeurons]);
+netModel{1+numLayers+1} = rand([numOutputNeurons,arrayDimensions(i)]);
 
 end
